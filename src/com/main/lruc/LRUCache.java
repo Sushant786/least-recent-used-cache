@@ -9,7 +9,7 @@ public class LRUCache {
 
     public LRUCache(int capacity) {
         this.capacity = capacity;
-        this.cache = new LinkedHashMap<Integer, Integer>(capacity + 1, 1.0f, true) {
+        this.cache = new LinkedHashMap<Integer, Integer>(capacity + 1, 0.75f, true) {
             protected boolean removeEldestEntry(Map.Entry<Integer, Integer> eldest) {
                 return size() > capacity;
             }
@@ -20,10 +20,7 @@ public class LRUCache {
         Integer value = cache.get(key);
         if (value == null) {
             return -1;
-        } else {
-            put(key, value);
         }
-
         return value;
     }
 
